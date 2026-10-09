@@ -1,0 +1,15 @@
+node_modules
+/.next
+/out
+/build
+*.log
+# Skutečné přístupy – nikdy necommitovat. Verzovaná je jen šablona .env.example.
+.env
+.env.local
+.env*.local
+!.env.example
+.DS_Store
+next-env.d.ts
+tsconfig.tsbuildinfo
+/imports/*.xlsx
+/imports/reports

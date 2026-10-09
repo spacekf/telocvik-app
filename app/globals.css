@@ -1,0 +1,135 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* --- Brand PrimMat (raw hodnoty) --- */
+    --brand-bg: #232052;
+    --brand-bg-dark: #17143a;
+    --brand-card: #2b2860;
+    --brand-accent: #d7e600;
+    --brand-accent-light: #eef25a;
+    --brand-text: #ffffff;
+    --brand-muted: #c9c7e8;
+    --brand-border: rgba(255, 255, 255, 0.12);
+    --brand-work-bg: #f6f7fb;
+
+    /* --- shadcn tokeny: SVĚTLÝ pracovní obsah (tabulky, dashboard) --- */
+    --background: 228 33% 97%;
+    --foreground: 244 44% 22%;
+    --card: 0 0% 100%;
+    --card-foreground: 244 44% 22%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 244 44% 22%;
+    --primary: 64 100% 45%; /* žluto-zelená CTA */
+    --primary-foreground: 248 49% 15%;
+    --secondary: 228 40% 95%;
+    --secondary-foreground: 244 44% 22%;
+    --muted: 228 40% 95%;
+    --muted-foreground: 244 15% 48%;
+    --accent: 230 38% 93%;
+    --accent-foreground: 244 44% 22%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 230 30% 88%;
+    --input: 230 30% 88%;
+    --ring: 244 44% 35%;
+    --radius: 0.625rem;
+  }
+
+  /* --- Tmavá brand plocha: sidebar, topbar, login --- */
+  .brand-dark {
+    --background: 248 49% 16%;
+    --foreground: 0 0% 100%;
+    --card: 245 41% 27%;
+    --card-foreground: 0 0% 100%;
+    --popover: 245 43% 24%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 64 100% 45%;
+    --primary-foreground: 248 49% 15%;
+    --secondary: 245 41% 30%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 245 41% 27%;
+    --muted-foreground: 243 33% 85%;
+    --accent: 246 41% 33%;
+    --accent-foreground: 0 0% 100%;
+    --border: 245 28% 38%;
+    --input: 245 28% 38%;
+    --ring: 64 100% 45%;
+    background-color: var(--brand-bg-dark);
+    color: var(--brand-text);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+}
+
+/* --- Decentní scrollbar ---
+   Tlumený neutrální thumb, ať netvoří vizuální šum. Na tmavých plochách světlý. */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(35, 32, 82, 0.28) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: rgba(35, 32, 82, 0.22);
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: rgba(35, 32, 82, 0.4);
+  background-clip: padding-box;
+}
+
+*::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Tmavé plochy (sidebar, login panel) – světlý decentní thumb. */
+.brand-dark {
+  scrollbar-color: rgba(255, 255, 255, 0.28) transparent;
+}
+.brand-dark *::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.22);
+  background-clip: padding-box;
+}
+.brand-dark *::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.4);
+  background-clip: padding-box;
+}
+
+/* Sticky tabulky (Excel-like) */
+.table-sticky thead th {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: hsl(var(--secondary));
+}
+.table-sticky .sticky-col {
+  position: sticky;
+  left: 0;
+  z-index: 10;
+  background: hsl(var(--card));
+}
+.table-sticky thead th.sticky-col {
+  z-index: 30;
+  background: hsl(var(--secondary));
+}
